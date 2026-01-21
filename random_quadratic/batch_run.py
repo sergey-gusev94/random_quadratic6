@@ -314,7 +314,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--batch",
         type=str,
-        default="none",
+        default="psd",
         help="Batch name (e.g., 'psd' for psd.txt, 'nonconvex100' \
             for nonconvex100.txt, 'none' to generate new batch). Default: nonconvex100",
     )
