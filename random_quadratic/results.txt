@@ -1,0 +1,858 @@
+Model gdp_reactors
+
+  Variables:
+    Q : Outlet flow rate of the superstructure unit [L/s]
+        Size=5, Index=N
+        Key : Lower : Value            : Upper : Fixed : Stale : Domain
+          1 :     0 : 1.09922895117744 :    10 : False : False : NonNegativeReals
+          2 :     0 : 1.09922895117744 :    10 : False : False : NonNegativeReals
+          3 :     0 : 1.09922895117744 :    10 : False : False : NonNegativeReals
+          4 :     0 : 1.09922895117744 :    10 : False : False : NonNegativeReals
+          5 :     0 : 1.09922895117744 :    10 : False : False : NonNegativeReals
+    QFR : Outlet flow rate recycle activation of the superstructure unit [L/s]
+        Size=5, Index=N
+        Key : Lower : Value            : Upper : Fixed : Stale : Domain
+          1 :     0 :              0.0 :    10 : False : False : NonNegativeReals
+          2 :     0 :              0.0 :    10 : False : False : NonNegativeReals
+          3 :     0 :              0.0 :    10 : False : False : NonNegativeReals
+          4 :     0 :              0.0 :    10 : False : False : NonNegativeReals
+          5 :     0 : 0.09922895117744 :    10 : False : False : NonNegativeReals
+    F : Molar flow [mol/s]
+        Size=10, Index=I*N
+        Key      : Lower : Value             : Upper : Fixed : Stale : Domain
+        ('A', 1) :     0 : 0.054961447558872 :    10 : False : False : NonNegativeReals
+        ('A', 2) :     0 :  0.11314013210024 :    10 : False : False : NonNegativeReals
+        ('A', 3) :     0 : 0.226230253422516 :    10 : False : False : NonNegativeReals
+        ('A', 4) :     0 : 0.426426392941275 :    10 : False : False : NonNegativeReals
+        ('A', 5) :     0 : 0.717244224730195 :    10 : False : False : NonNegativeReals
+        ('B', 1) :     0 : 1.044267503618568 :    10 : False : False : NonNegativeReals
+        ('B', 2) :     0 : 0.986088819077201 :    10 : False : False : NonNegativeReals
+        ('B', 3) :     0 : 0.872998697754925 :    10 : False : False : NonNegativeReals
+        ('B', 4) :     0 : 0.672802558236165 :    10 : False : False : NonNegativeReals
+        ('B', 5) :     0 : 0.381984726447246 :    10 : False : False : NonNegativeReals
+    FR : Molar flow  recycle activation [mol/s]
+        Size=10, Index=I*N
+        Key      : Lower : Value             : Upper : Fixed : Stale : Domain
+        ('A', 1) :     0 :               0.0 :    10 : False : False : NonNegativeReals
+        ('A', 2) :     0 :               0.0 :    10 : False : False : NonNegativeReals
+        ('A', 3) :     0 :               0.0 :    10 : False : False : NonNegativeReals
+        ('A', 4) :     0 :               0.0 :    10 : False : False : NonNegativeReals
+        ('A', 5) :     0 : 0.004961447558872 :    10 : False : False : NonNegativeReals
+        ('B', 1) :     0 :               0.0 :    10 : False : False : NonNegativeReals
+        ('B', 2) :     0 :               0.0 :    10 : False : False : NonNegativeReals
+        ('B', 3) :     0 :               0.0 :    10 : False : False : NonNegativeReals
+        ('B', 4) :     0 :               0.0 :    10 : False : False : NonNegativeReals
+        ('B', 5) :     0 : 0.094267503618568 :    10 : False : False : NonNegativeReals
+    rate : Reaction rate [mol/(L*s)]
+        Size=10, Index=I*N
+        Key      : Lower : Value              : Upper : Fixed : Stale : Domain
+        ('A', 1) :   -10 : -0.095000634638023 :    10 : False : False :  Reals
+        ('A', 2) :   -10 :  -0.18466633193444 :    10 : False : False :  Reals
+        ('A', 3) :   -10 : -0.326903319667199 :    10 : False : False :  Reals
+        ('A', 4) :   -10 : -0.474882048560951 :    10 : False : False :  Reals
+        ('A', 5) :   -10 :  -0.45348990917695 :    10 : False : False :  Reals
+        ('B', 1) :   -10 :  0.095000634638023 :    10 : False : False :  Reals
+        ('B', 2) :   -10 :   0.18466633193444 :    10 : False : False :  Reals
+        ('B', 3) :   -10 :  0.326903319667199 :    10 : False : False :  Reals
+        ('B', 4) :   -10 :  0.474882048560951 :    10 : False : False :  Reals
+        ('B', 5) :   -10 :   0.45348990917695 :    10 : False : False :  Reals
+    V : Reactor volume [L]
+        Size=5, Index=N
+        Key : Lower : Value             : Upper : Fixed : Stale : Domain
+          1 :     0 : 0.612399934475418 :    10 : False : False : NonNegativeReals
+          2 :     0 : 0.612399934475418 :    10 : False : False : NonNegativeReals
+          3 :     0 : 0.612399934475418 :    10 : False : False : NonNegativeReals
+          4 :     0 : 0.612399934475418 :    10 : False : False : NonNegativeReals
+          5 :     0 : 0.612399934475418 :    10 : False : False : NonNegativeReals
+    c : Volume activation [L]
+        Size=5, Index=N
+        Key : Lower : Value             : Upper : Fixed : Stale : Domain
+          1 :     0 : 0.612399934475418 :    10 : False : False : NonNegativeReals
+          2 :     0 : 0.612399934475418 :    10 : False : False : NonNegativeReals
+          3 :     0 : 0.612399934475418 :    10 : False : False : NonNegativeReals
+          4 :     0 : 0.612399934475418 :    10 : False : False : NonNegativeReals
+          5 :     0 : 0.612399934475418 :    10 : False : False : NonNegativeReals
+    t : Auxiliary variable for Q[n]^2
+        Size=5, Index=N
+        Key : Lower : Value             : Upper : Fixed : Stale : Domain
+          1 :     0 : 1.208303688932111 :   100 : False : False : NonNegativeReals
+          2 :     0 : 1.208303688932111 :   100 : False : False : NonNegativeReals
+          3 :     0 : 1.208303688932111 :   100 : False : False : NonNegativeReals
+          4 :     0 : 1.208303688932111 :   100 : False : False : NonNegativeReals
+          5 :     0 : 1.208303688932111 :   100 : False : False : NonNegativeReals
+    QR : Recycle flow rate [L/s]
+        Size=1, Index=None
+        Key  : Lower : Value            : Upper : Fixed : Stale : Domain
+        None :     0 : 0.09922895117744 :    10 : False : False : NonNegativeReals
+    QP : Product flow rate [L/s]
+        Size=1, Index=None
+        Key  : Lower : Value : Upper : Fixed : Stale : Domain
+        None :     0 :   1.0 :    10 : False : False : NonNegativeReals
+    R : Recycle molar flow [mol/s]
+        Size=2, Index=I
+        Key : Lower : Value             : Upper : Fixed : Stale : Domain
+          A :     0 : 0.004961447558872 :    10 : False : False : NonNegativeReals
+          B :     0 : 0.094267503618568 :    10 : False : False : NonNegativeReals
+    P : Product molar flow [mol/s]
+        Size=2, Index=I
+        Key : Lower : Value : Upper : Fixed : Stale : Domain
+          A :     0 :  0.05 :    10 : False : False : NonNegativeReals
+          B :     0 :  0.95 :    10 : False : False : NonNegativeReals
+    YF : Unreacted feed in reactor n
+        Size=5, Index=N
+        Key : Lower : Value : Upper : Fixed : Stale : Domain
+          1 :     0 :   0.0 :     1 : False : False : Binary
+          2 :     0 :   0.0 :     1 : False : False : Binary
+          3 :     0 :   0.0 :     1 : False : False : Binary
+          4 :     0 :   0.0 :     1 : False : False : Binary
+          5 :     0 :   1.0 :     1 : False : False : Binary
+    YR_is_recycle : Existence of recycle flow in unit n
+        Size=5, Index=N
+        Key : Lower : Value : Upper : Fixed : Stale : Domain
+          1 :     0 :   0.0 :     1 : False : False : Binary
+          2 :     0 :   0.0 :     1 : False : False : Binary
+          3 :     0 :   0.0 :     1 : False : False : Binary
+          4 :     0 :   0.0 :     1 : False : False : Binary
+          5 :     0 :   1.0 :     1 : False : False : Binary
+    YR_is_not_recycle : Existence of recycle flow in unit n
+        Size=5, Index=N
+        Key : Lower : Value : Upper : Fixed : Stale : Domain
+          1 :     0 :   1.0 :     1 : False : False : Binary
+          2 :     0 :   1.0 :     1 : False : False : Binary
+          3 :     0 :   1.0 :     1 : False : False : Binary
+          4 :     0 :   1.0 :     1 : False : False : Binary
+          5 :     0 :   0.0 :     1 : False : False : Binary
+    YP_is_cstr : Unit operation in n
+        Size=5, Index=N
+        Key : Lower : Value : Upper : Fixed : Stale : Domain
+          1 :     0 :   1.0 :     1 : False : False : Binary
+          2 :     0 :   1.0 :     1 : False : False : Binary
+          3 :     0 :   1.0 :     1 : False : False : Binary
+          4 :     0 :   1.0 :     1 : False : False : Binary
+          5 :     0 :   1.0 :     1 : False : False : Binary
+    YP_is_bypass : Unit operation in n
+        Size=5, Index=N
+        Key : Lower : Value : Upper : Fixed : Stale : Domain
+          1 :     0 :   0.0 :     1 : False : False : Binary
+          2 :     0 :   0.0 :     1 : False : False : Binary
+          3 :     0 :   0.0 :     1 : False : False : Binary
+          4 :     0 :   0.0 :     1 : False : False : Binary
+          5 :     0 :   0.0 :     1 : False : False : Binary
+    rate_cstr : rate copy for cstr
+        Size=10, Index=I*N
+        Key      : Lower : Value              : Upper : Fixed : Stale : Domain
+        ('A', 1) :   -10 : -0.095000634638023 :    10 : False : False :  Reals
+        ('A', 2) :   -10 :  -0.18466633193444 :    10 : False : False :  Reals
+        ('A', 3) :   -10 : -0.326903319667199 :    10 : False : False :  Reals
+        ('A', 4) :   -10 : -0.474882048560951 :    10 : False : False :  Reals
+        ('A', 5) :   -10 :  -0.45348990917695 :    10 : False : False :  Reals
+        ('B', 1) :   -10 :  0.095000634638023 :    10 : False : False :  Reals
+        ('B', 2) :   -10 :   0.18466633193444 :    10 : False : False :  Reals
+        ('B', 3) :   -10 :  0.326903319667199 :    10 : False : False :  Reals
+        ('B', 4) :   -10 :  0.474882048560951 :    10 : False : False :  Reals
+        ('B', 5) :   -10 :   0.45348990917695 :    10 : False : False :  Reals
+    rate_bypass : rate copy for bypass
+        Size=10, Index=I*N
+        Key      : Lower : Value : Upper : Fixed : Stale : Domain
+        ('A', 1) :   -10 :   0.0 :    10 : False : False :  Reals
+        ('A', 2) :   -10 :   0.0 :    10 : False : False :  Reals
+        ('A', 3) :   -10 :   0.0 :    10 : False : False :  Reals
+        ('A', 4) :   -10 :   0.0 :    10 : False : False :  Reals
+        ('A', 5) :   -10 :   0.0 :    10 : False : False :  Reals
+        ('B', 1) :   -10 :   0.0 :    10 : False : False :  Reals
+        ('B', 2) :   -10 :   0.0 :    10 : False : False :  Reals
+        ('B', 3) :   -10 :   0.0 :    10 : False : False :  Reals
+        ('B', 4) :   -10 :   0.0 :    10 : False : False :  Reals
+        ('B', 5) :   -10 :   0.0 :    10 : False : False :  Reals
+    FR_cstr : FR copy for cstr
+        Size=10, Index=I*N
+        Key      : Lower : Value             : Upper : Fixed : Stale : Domain
+        ('A', 1) :     0 :               0.0 :    10 : False : False :  Reals
+        ('A', 2) :     0 :               0.0 :    10 : False : False :  Reals
+        ('A', 3) :     0 :               0.0 :    10 : False : False :  Reals
+        ('A', 4) :     0 :               0.0 :    10 : False : False :  Reals
+        ('A', 5) :     0 : 0.004961447558872 :    10 : False : False :  Reals
+        ('B', 1) :     0 :               0.0 :    10 : False : False :  Reals
+        ('B', 2) :     0 :               0.0 :    10 : False : False :  Reals
+        ('B', 3) :     0 :               0.0 :    10 : False : False :  Reals
+        ('B', 4) :     0 :               0.0 :    10 : False : False :  Reals
+        ('B', 5) :     0 : 0.094267503618568 :    10 : False : False :  Reals
+    FR_bypass : FR copy for bypass
+        Size=10, Index=I*N
+        Key      : Lower : Value : Upper : Fixed : Stale : Domain
+        ('A', 1) :     0 :   0.0 :    10 : False : False :  Reals
+        ('A', 2) :     0 :   0.0 :    10 : False : False :  Reals
+        ('A', 3) :     0 :   0.0 :    10 : False : False :  Reals
+        ('A', 4) :     0 :   0.0 :    10 : False : False :  Reals
+        ('A', 5) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 1) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 2) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 3) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 4) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 5) :     0 :   0.0 :    10 : False : False :  Reals
+    QFR_cstr : QFR copy for cstr
+        Size=5, Index=N
+        Key : Lower : Value            : Upper : Fixed : Stale : Domain
+          1 :     0 :              0.0 :    10 : False : False :  Reals
+          2 :     0 :              0.0 :    10 : False : False :  Reals
+          3 :     0 :              0.0 :    10 : False : False :  Reals
+          4 :     0 :              0.0 :    10 : False : False :  Reals
+          5 :     0 : 0.09922895117744 :    10 : False : False :  Reals
+    QFR_bypass : QFR copy for bypass
+        Size=5, Index=N
+        Key : Lower : Value : Upper : Fixed : Stale : Domain
+          1 :     0 :   0.0 :    10 : False : False :  Reals
+          2 :     0 :   0.0 :    10 : False : False :  Reals
+          3 :     0 :   0.0 :    10 : False : False :  Reals
+          4 :     0 :   0.0 :    10 : False : False :  Reals
+          5 :     0 :   0.0 :    10 : False : False :  Reals
+    c_cstr : c copy for cstr
+        Size=5, Index=N
+        Key : Lower : Value             : Upper : Fixed : Stale : Domain
+          1 :     0 : 0.612399934475418 :    10 : False : False :  Reals
+          2 :     0 : 0.612399934475418 :    10 : False : False :  Reals
+          3 :     0 : 0.612399934475418 :    10 : False : False :  Reals
+          4 :     0 : 0.612399934475418 :    10 : False : False :  Reals
+          5 :     0 : 0.612399934475418 :    10 : False : False :  Reals
+    c_bypass : c copy for bypass
+        Size=5, Index=N
+        Key : Lower : Value : Upper : Fixed : Stale : Domain
+          1 :     0 :   0.0 :    10 : False : False :  Reals
+          2 :     0 :   0.0 :    10 : False : False :  Reals
+          3 :     0 :   0.0 :    10 : False : False :  Reals
+          4 :     0 :   0.0 :    10 : False : False :  Reals
+          5 :     0 :   0.0 :    10 : False : False :  Reals
+    F_cstr : F copy for cstr
+        Size=10, Index=I*N
+        Key      : Lower : Value             : Upper : Fixed : Stale : Domain
+        ('A', 1) :     0 : 0.054961447558872 :    10 : False : False :  Reals
+        ('A', 2) :     0 :  0.11314013210024 :    10 : False : False :  Reals
+        ('A', 3) :     0 : 0.226230253422516 :    10 : False : False :  Reals
+        ('A', 4) :     0 : 0.426426392941275 :    10 : False : False :  Reals
+        ('A', 5) :     0 : 0.717244224730195 :    10 : False : False :  Reals
+        ('B', 1) :     0 : 1.044267503618568 :    10 : False : False :  Reals
+        ('B', 2) :     0 : 0.986088819077201 :    10 : False : False :  Reals
+        ('B', 3) :     0 : 0.872998697754925 :    10 : False : False :  Reals
+        ('B', 4) :     0 : 0.672802558236165 :    10 : False : False :  Reals
+        ('B', 5) :     0 : 0.381984726447246 :    10 : False : False :  Reals
+    F_bypass : F copy for bypass
+        Size=10, Index=I*N
+        Key      : Lower : Value : Upper : Fixed : Stale : Domain
+        ('A', 1) :     0 :   0.0 :    10 : False : False :  Reals
+        ('A', 2) :     0 :   0.0 :    10 : False : False :  Reals
+        ('A', 3) :     0 :   0.0 :    10 : False : False :  Reals
+        ('A', 4) :     0 :   0.0 :    10 : False : False :  Reals
+        ('A', 5) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 1) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 2) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 3) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 4) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 5) :     0 :   0.0 :    10 : False : False :  Reals
+    t_cstr : t copy for cstr
+        Size=5, Index=N
+        Key : Lower : Value             : Upper : Fixed : Stale : Domain
+          1 :     0 : 1.208303688932111 :   100 : False : False :  Reals
+          2 :     0 : 1.208303688932111 :   100 : False : False :  Reals
+          3 :     0 : 1.208303688932111 :   100 : False : False :  Reals
+          4 :     0 : 1.208303688932111 :   100 : False : False :  Reals
+          5 :     0 :  1.20830368893214 :   100 : False : False :  Reals
+    t_bypass : t copy for bypass
+        Size=5, Index=N
+        Key : Lower : Value : Upper : Fixed : Stale : Domain
+          1 :     0 :   0.0 :   100 : False : False :  Reals
+          2 :     0 :   0.0 :   100 : False : False :  Reals
+          3 :     0 :   0.0 :   100 : False : False :  Reals
+          4 :     0 :   0.0 :   100 : False : False :  Reals
+          5 :     0 :   0.0 :   100 : False : False :  Reals
+    FR_recycle : FR copy for recycle
+        Size=10, Index=I*N
+        Key      : Lower : Value             : Upper : Fixed : Stale : Domain
+        ('A', 1) :     0 :               0.0 :    10 : False : False :  Reals
+        ('A', 2) :     0 :               0.0 :    10 : False : False :  Reals
+        ('A', 3) :     0 :               0.0 :    10 : False : False :  Reals
+        ('A', 4) :     0 :               0.0 :    10 : False : False :  Reals
+        ('A', 5) :     0 : 0.004961447558872 :    10 : False : False :  Reals
+        ('B', 1) :     0 :               0.0 :    10 : False : False :  Reals
+        ('B', 2) :     0 :               0.0 :    10 : False : False :  Reals
+        ('B', 3) :     0 :               0.0 :    10 : False : False :  Reals
+        ('B', 4) :     0 :               0.0 :    10 : False : False :  Reals
+        ('B', 5) :     0 : 0.094267503618568 :    10 : False : False :  Reals
+    FR_no_recycle : FR copy for no_recycle
+        Size=10, Index=I*N
+        Key      : Lower : Value : Upper : Fixed : Stale : Domain
+        ('A', 1) :     0 :   0.0 :    10 : False : False :  Reals
+        ('A', 2) :     0 :   0.0 :    10 : False : False :  Reals
+        ('A', 3) :     0 :   0.0 :    10 : False : False :  Reals
+        ('A', 4) :     0 :   0.0 :    10 : False : False :  Reals
+        ('A', 5) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 1) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 2) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 3) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 4) :     0 :   0.0 :    10 : False : False :  Reals
+        ('B', 5) :     0 :   0.0 :    10 : False : False :  Reals
+    QFR_recycle : QFR copy for recycle
+        Size=5, Index=N
+        Key : Lower : Value            : Upper : Fixed : Stale : Domain
+          1 :     0 :              0.0 :    10 : False : False :  Reals
+          2 :     0 :              0.0 :    10 : False : False :  Reals
+          3 :     0 :              0.0 :    10 : False : False :  Reals
+          4 :     0 :              0.0 :    10 : False : False :  Reals
+          5 :     0 : 0.09922895117744 :    10 : False : False :  Reals
+    QFR_no_recycle : QFR copy for no_recycle
+        Size=5, Index=N
+        Key : Lower : Value : Upper : Fixed : Stale : Domain
+          1 :     0 :   0.0 :    10 : False : False :  Reals
+          2 :     0 :   0.0 :    10 : False : False :  Reals
+          3 :     0 :   0.0 :    10 : False : False :  Reals
+          4 :     0 :   0.0 :    10 : False : False :  Reals
+          5 :     0 :   0.0 :    10 : False : False :  Reals
+
+  Objectives:
+    obj : Size=1, Index=None, Active=True
+        Key  : Active : Value
+        None :   True : 3.0619996723770897
+
+  Constraints:
+    unreact_mole : Size=2
+        Key      : Lower : Body                   : Upper
+        ('A', 5) :   0.0 : 3.2163449570354885e-08 :   0.0
+        ('B', 5) :   0.0 : -3.216345056955561e-08 :   0.0
+    unreact_cont : Size=1
+        Key : Lower : Body : Upper
+          5 :   0.0 :  0.0 :   0.0
+    react_mole : Size=8
+        Key      : Lower : Body                   : Upper
+        ('A', 1) :   0.0 :  3.021139195966138e-07 :   0.0
+        ('A', 2) :   0.0 : 4.7174580915243514e-07 :   0.0
+        ('A', 3) :   0.0 :  5.679747697440174e-07 :   0.0
+        ('A', 4) :   0.0 :  9.636664138890083e-08 :   0.0
+        ('B', 1) :   0.0 : -3.021139185835353e-07 :   0.0
+        ('B', 2) :   0.0 : -4.717458091940685e-07 :   0.0
+        ('B', 3) :   0.0 : -5.679747707709737e-07 :   0.0
+        ('B', 4) :   0.0 : -9.636664033418896e-08 :   0.0
+    react_cont : Size=4
+        Key : Lower : Body : Upper
+          1 :   0.0 :  0.0 :   0.0
+          2 :   0.0 :  0.0 :   0.0
+          3 :   0.0 :  0.0 :   0.0
+          4 :   0.0 :  0.0 :   0.0
+    split_mole : Size=2
+        Key : Lower : Body                   : Upper
+          A :   0.0 : -1.734723475976807e-18 :   0.0
+          B :   0.0 :  5.551115123125783e-17 :   0.0
+    split_cont : Size=1
+        Key  : Lower : Body                   : Upper
+        None :   0.0 : 1.3877787807814457e-17 :   0.0
+    split_add : Size=2
+        Key : Lower : Body : Upper
+          A :   0.0 :  0.0 :   0.0
+          B :   0.0 :  0.0 :   0.0
+    prod_spec : Size=1
+        Key  : Lower : Body : Upper
+        None :   0.0 :  0.0 :   0.0
+    vol_cons : Size=4
+        Key : Lower : Body : Upper
+          2 :   0.0 :  0.0 :   0.0
+          3 :   0.0 :  0.0 :   0.0
+          4 :   0.0 :  0.0 :   0.0
+          5 :   0.0 :  0.0 :   0.0
+    quad_link : Size=5
+        Key : Lower : Body                   : Upper
+          1 :   0.0 : -5.981745436756114e-07 :   0.0
+          2 :   0.0 : -5.981745436756114e-07 :   0.0
+          3 :   0.0 : -5.981745436756114e-07 :   0.0
+          4 :   0.0 : -5.981745436756114e-07 :   0.0
+          5 :   0.0 : -5.981745436756114e-07 :   0.0
+    binary_exactly_one_cstr_or_bypass : Size=5
+        Key : Lower : Body : Upper
+          1 :   1.0 :  1.0 :   1.0
+          2 :   1.0 :  1.0 :   1.0
+          3 :   1.0 :  1.0 :   1.0
+          4 :   1.0 :  1.0 :   1.0
+          5 :   1.0 :  1.0 :   1.0
+    binary_exactly_one_recycle : Size=5
+        Key : Lower : Body : Upper
+          1 :   1.0 :  1.0 :   1.0
+          2 :   1.0 :  1.0 :   1.0
+          3 :   1.0 :  1.0 :   1.0
+          4 :   1.0 :  1.0 :   1.0
+          5 :   1.0 :  1.0 :   1.0
+    cstr_if_recycle : Size=5
+        Key : Lower : Body : Upper
+          1 :   0.0 :  1.0 :  None
+          2 :   0.0 :  1.0 :  None
+          3 :   0.0 :  1.0 :  None
+          4 :   0.0 :  1.0 :  None
+          5 :   0.0 :  0.0 :  None
+    binary_exactly_one_unreacted_feed : Size=1
+        Key  : Lower : Body : Upper
+        None :   1.0 :  1.0 :   1.0
+    one_recycle : Size=1
+        Key  : Lower : Body : Upper
+        None :   1.0 :  1.0 :   1.0
+    unit_in_n : Size=19
+        Key : Lower : Body : Upper
+          1 :   1.0 :  1.0 :   1.0
+          2 :  None : -1.0 :   0.0
+          3 :  None :  0.0 :   0.0
+          4 :  None :  0.0 :   0.0
+          5 :  None : -1.0 :   0.0
+          6 :  None :  0.0 :   0.0
+          7 :  None :  0.0 :   0.0
+          8 :  None :  0.0 :   0.0
+          9 :  None : -1.0 :   0.0
+         10 :  None :  0.0 :   0.0
+         11 :  None :  0.0 :   0.0
+         12 :  None :  0.0 :   0.0
+         13 :  None :  0.0 :   0.0
+         14 :  None :  0.0 :   0.0
+         15 :  None :  0.0 :   0.0
+         16 :  None : -1.0 :   0.0
+         17 :  None : -1.0 :   0.0
+         18 :  None : -1.0 :   0.0
+         19 :  None : -1.0 :   0.0
+    rate_['cstr', 'bypass']_sum : Size=10
+        Key      : Lower : Body : Upper
+        ('A', 1) :   0.0 :  0.0 :   0.0
+        ('A', 2) :   0.0 :  0.0 :   0.0
+        ('A', 3) :   0.0 :  0.0 :   0.0
+        ('A', 4) :   0.0 :  0.0 :   0.0
+        ('A', 5) :   0.0 :  0.0 :   0.0
+        ('B', 1) :   0.0 :  0.0 :   0.0
+        ('B', 2) :   0.0 :  0.0 :   0.0
+        ('B', 3) :   0.0 :  0.0 :   0.0
+        ('B', 4) :   0.0 :  0.0 :   0.0
+        ('B', 5) :   0.0 :  0.0 :   0.0
+    rate_['cstr', 'bypass']_lower_boundary : Size=20
+        Key                : Lower : Body                : Upper
+        ('bypass', 'A', 1) :  None :                 0.0 :   0.0
+        ('bypass', 'A', 2) :  None :                 0.0 :   0.0
+        ('bypass', 'A', 3) :  None :                 0.0 :   0.0
+        ('bypass', 'A', 4) :  None :                 0.0 :   0.0
+        ('bypass', 'A', 5) :  None :                 0.0 :   0.0
+        ('bypass', 'B', 1) :  None :                 0.0 :   0.0
+        ('bypass', 'B', 2) :  None :                 0.0 :   0.0
+        ('bypass', 'B', 3) :  None :                 0.0 :   0.0
+        ('bypass', 'B', 4) :  None :                 0.0 :   0.0
+        ('bypass', 'B', 5) :  None :                 0.0 :   0.0
+          ('cstr', 'A', 1) :  None :  -9.904999365361977 :   0.0
+          ('cstr', 'A', 2) :  None :   -9.81533366806556 :   0.0
+          ('cstr', 'A', 3) :  None :  -9.673096680332801 :   0.0
+          ('cstr', 'A', 4) :  None :  -9.525117951439048 :   0.0
+          ('cstr', 'A', 5) :  None :   -9.54651009082305 :   0.0
+          ('cstr', 'B', 1) :  None : -10.095000634638023 :   0.0
+          ('cstr', 'B', 2) :  None :  -10.18466633193444 :   0.0
+          ('cstr', 'B', 3) :  None : -10.326903319667199 :   0.0
+          ('cstr', 'B', 4) :  None : -10.474882048560952 :   0.0
+          ('cstr', 'B', 5) :  None :  -10.45348990917695 :   0.0
+    rate_['cstr', 'bypass']_upper_boundary : Size=20
+        Key                : Lower : Body                : Upper
+        ('bypass', 'A', 1) :  None :                 0.0 :   0.0
+        ('bypass', 'A', 2) :  None :                 0.0 :   0.0
+        ('bypass', 'A', 3) :  None :                 0.0 :   0.0
+        ('bypass', 'A', 4) :  None :                 0.0 :   0.0
+        ('bypass', 'A', 5) :  None :                 0.0 :   0.0
+        ('bypass', 'B', 1) :  None :                 0.0 :   0.0
+        ('bypass', 'B', 2) :  None :                 0.0 :   0.0
+        ('bypass', 'B', 3) :  None :                 0.0 :   0.0
+        ('bypass', 'B', 4) :  None :                 0.0 :   0.0
+        ('bypass', 'B', 5) :  None :                 0.0 :   0.0
+          ('cstr', 'A', 1) :  None : -10.095000634638023 :   0.0
+          ('cstr', 'A', 2) :  None :  -10.18466633193444 :   0.0
+          ('cstr', 'A', 3) :  None : -10.326903319667199 :   0.0
+          ('cstr', 'A', 4) :  None : -10.474882048560952 :   0.0
+          ('cstr', 'A', 5) :  None :  -10.45348990917695 :   0.0
+          ('cstr', 'B', 1) :  None :  -9.904999365361977 :   0.0
+          ('cstr', 'B', 2) :  None :   -9.81533366806556 :   0.0
+          ('cstr', 'B', 3) :  None :  -9.673096680332801 :   0.0
+          ('cstr', 'B', 4) :  None :  -9.525117951439048 :   0.0
+          ('cstr', 'B', 5) :  None :   -9.54651009082305 :   0.0
+    FR_['cstr', 'bypass']_sum : Size=10
+        Key      : Lower : Body : Upper
+        ('A', 1) :   0.0 :  0.0 :   0.0
+        ('A', 2) :   0.0 :  0.0 :   0.0
+        ('A', 3) :   0.0 :  0.0 :   0.0
+        ('A', 4) :   0.0 :  0.0 :   0.0
+        ('A', 5) :   0.0 :  0.0 :   0.0
+        ('B', 1) :   0.0 :  0.0 :   0.0
+        ('B', 2) :   0.0 :  0.0 :   0.0
+        ('B', 3) :   0.0 :  0.0 :   0.0
+        ('B', 4) :   0.0 :  0.0 :   0.0
+        ('B', 5) :   0.0 :  0.0 :   0.0
+    FR_['cstr', 'bypass']_lower_boundary : Size=20
+        Key                : Lower : Body               : Upper
+        ('bypass', 'A', 1) :  None :                0.0 :   0.0
+        ('bypass', 'A', 2) :  None :                0.0 :   0.0
+        ('bypass', 'A', 3) :  None :                0.0 :   0.0
+        ('bypass', 'A', 4) :  None :                0.0 :   0.0
+        ('bypass', 'A', 5) :  None :                0.0 :   0.0
+        ('bypass', 'B', 1) :  None :                0.0 :   0.0
+        ('bypass', 'B', 2) :  None :                0.0 :   0.0
+        ('bypass', 'B', 3) :  None :                0.0 :   0.0
+        ('bypass', 'B', 4) :  None :                0.0 :   0.0
+        ('bypass', 'B', 5) :  None :                0.0 :   0.0
+          ('cstr', 'A', 1) :  None :                0.0 :   0.0
+          ('cstr', 'A', 2) :  None :                0.0 :   0.0
+          ('cstr', 'A', 3) :  None :                0.0 :   0.0
+          ('cstr', 'A', 4) :  None :                0.0 :   0.0
+          ('cstr', 'A', 5) :  None : -0.004961447558872 :   0.0
+          ('cstr', 'B', 1) :  None :                0.0 :   0.0
+          ('cstr', 'B', 2) :  None :                0.0 :   0.0
+          ('cstr', 'B', 3) :  None :                0.0 :   0.0
+          ('cstr', 'B', 4) :  None :                0.0 :   0.0
+          ('cstr', 'B', 5) :  None : -0.094267503618568 :   0.0
+    FR_['cstr', 'bypass']_upper_boundary : Size=20
+        Key                : Lower : Body               : Upper
+        ('bypass', 'A', 1) :  None :                0.0 :   0.0
+        ('bypass', 'A', 2) :  None :                0.0 :   0.0
+        ('bypass', 'A', 3) :  None :                0.0 :   0.0
+        ('bypass', 'A', 4) :  None :                0.0 :   0.0
+        ('bypass', 'A', 5) :  None :                0.0 :   0.0
+        ('bypass', 'B', 1) :  None :                0.0 :   0.0
+        ('bypass', 'B', 2) :  None :                0.0 :   0.0
+        ('bypass', 'B', 3) :  None :                0.0 :   0.0
+        ('bypass', 'B', 4) :  None :                0.0 :   0.0
+        ('bypass', 'B', 5) :  None :                0.0 :   0.0
+          ('cstr', 'A', 1) :  None :              -10.0 :   0.0
+          ('cstr', 'A', 2) :  None :              -10.0 :   0.0
+          ('cstr', 'A', 3) :  None :              -10.0 :   0.0
+          ('cstr', 'A', 4) :  None :              -10.0 :   0.0
+          ('cstr', 'A', 5) :  None : -9.995038552441128 :   0.0
+          ('cstr', 'B', 1) :  None :              -10.0 :   0.0
+          ('cstr', 'B', 2) :  None :              -10.0 :   0.0
+          ('cstr', 'B', 3) :  None :              -10.0 :   0.0
+          ('cstr', 'B', 4) :  None :              -10.0 :   0.0
+          ('cstr', 'B', 5) :  None : -9.905732496381432 :   0.0
+    QFR_['cstr', 'bypass']_sum : Size=5
+        Key : Lower : Body : Upper
+          1 :   0.0 :  0.0 :   0.0
+          2 :   0.0 :  0.0 :   0.0
+          3 :   0.0 :  0.0 :   0.0
+          4 :   0.0 :  0.0 :   0.0
+          5 :   0.0 :  0.0 :   0.0
+    QFR_['cstr', 'bypass']_lower_boundary : Size=10
+        Key           : Lower : Body              : Upper
+        ('bypass', 1) :  None :               0.0 :   0.0
+        ('bypass', 2) :  None :               0.0 :   0.0
+        ('bypass', 3) :  None :               0.0 :   0.0
+        ('bypass', 4) :  None :               0.0 :   0.0
+        ('bypass', 5) :  None :               0.0 :   0.0
+          ('cstr', 1) :  None :               0.0 :   0.0
+          ('cstr', 2) :  None :               0.0 :   0.0
+          ('cstr', 3) :  None :               0.0 :   0.0
+          ('cstr', 4) :  None :               0.0 :   0.0
+          ('cstr', 5) :  None : -0.09922895117744 :   0.0
+    QFR_['cstr', 'bypass']_upper_boundary : Size=10
+        Key           : Lower : Body              : Upper
+        ('bypass', 1) :  None :               0.0 :   0.0
+        ('bypass', 2) :  None :               0.0 :   0.0
+        ('bypass', 3) :  None :               0.0 :   0.0
+        ('bypass', 4) :  None :               0.0 :   0.0
+        ('bypass', 5) :  None :               0.0 :   0.0
+          ('cstr', 1) :  None :             -10.0 :   0.0
+          ('cstr', 2) :  None :             -10.0 :   0.0
+          ('cstr', 3) :  None :             -10.0 :   0.0
+          ('cstr', 4) :  None :             -10.0 :   0.0
+          ('cstr', 5) :  None : -9.90077104882256 :   0.0
+    c_['cstr', 'bypass']_sum : Size=5
+        Key : Lower : Body : Upper
+          1 :   0.0 :  0.0 :   0.0
+          2 :   0.0 :  0.0 :   0.0
+          3 :   0.0 :  0.0 :   0.0
+          4 :   0.0 :  0.0 :   0.0
+          5 :   0.0 :  0.0 :   0.0
+    c_['cstr', 'bypass']_lower_boundary : Size=10
+        Key           : Lower : Body               : Upper
+        ('bypass', 1) :  None :                0.0 :   0.0
+        ('bypass', 2) :  None :                0.0 :   0.0
+        ('bypass', 3) :  None :                0.0 :   0.0
+        ('bypass', 4) :  None :                0.0 :   0.0
+        ('bypass', 5) :  None :                0.0 :   0.0
+          ('cstr', 1) :  None : -0.612399934475418 :   0.0
+          ('cstr', 2) :  None : -0.612399934475418 :   0.0
+          ('cstr', 3) :  None : -0.612399934475418 :   0.0
+          ('cstr', 4) :  None : -0.612399934475418 :   0.0
+          ('cstr', 5) :  None : -0.612399934475418 :   0.0
+    c_['cstr', 'bypass']_upper_boundary : Size=10
+        Key           : Lower : Body               : Upper
+        ('bypass', 1) :  None :                0.0 :   0.0
+        ('bypass', 2) :  None :                0.0 :   0.0
+        ('bypass', 3) :  None :                0.0 :   0.0
+        ('bypass', 4) :  None :                0.0 :   0.0
+        ('bypass', 5) :  None :                0.0 :   0.0
+          ('cstr', 1) :  None : -9.387600065524582 :   0.0
+          ('cstr', 2) :  None : -9.387600065524582 :   0.0
+          ('cstr', 3) :  None : -9.387600065524582 :   0.0
+          ('cstr', 4) :  None : -9.387600065524582 :   0.0
+          ('cstr', 5) :  None : -9.387600065524582 :   0.0
+    F_['cstr', 'bypass']_sum : Size=10
+        Key      : Lower : Body : Upper
+        ('A', 1) :   0.0 :  0.0 :   0.0
+        ('A', 2) :   0.0 :  0.0 :   0.0
+        ('A', 3) :   0.0 :  0.0 :   0.0
+        ('A', 4) :   0.0 :  0.0 :   0.0
+        ('A', 5) :   0.0 :  0.0 :   0.0
+        ('B', 1) :   0.0 :  0.0 :   0.0
+        ('B', 2) :   0.0 :  0.0 :   0.0
+        ('B', 3) :   0.0 :  0.0 :   0.0
+        ('B', 4) :   0.0 :  0.0 :   0.0
+        ('B', 5) :   0.0 :  0.0 :   0.0
+    F_['cstr', 'bypass']_lower_boundary : Size=20
+        Key                : Lower : Body               : Upper
+        ('bypass', 'A', 1) :  None :                0.0 :   0.0
+        ('bypass', 'A', 2) :  None :                0.0 :   0.0
+        ('bypass', 'A', 3) :  None :                0.0 :   0.0
+        ('bypass', 'A', 4) :  None :                0.0 :   0.0
+        ('bypass', 'A', 5) :  None :                0.0 :   0.0
+        ('bypass', 'B', 1) :  None :                0.0 :   0.0
+        ('bypass', 'B', 2) :  None :                0.0 :   0.0
+        ('bypass', 'B', 3) :  None :                0.0 :   0.0
+        ('bypass', 'B', 4) :  None :                0.0 :   0.0
+        ('bypass', 'B', 5) :  None :                0.0 :   0.0
+          ('cstr', 'A', 1) :  None : -0.054961447558872 :   0.0
+          ('cstr', 'A', 2) :  None :  -0.11314013210024 :   0.0
+          ('cstr', 'A', 3) :  None : -0.226230253422516 :   0.0
+          ('cstr', 'A', 4) :  None : -0.426426392941275 :   0.0
+          ('cstr', 'A', 5) :  None : -0.717244224730195 :   0.0
+          ('cstr', 'B', 1) :  None : -1.044267503618568 :   0.0
+          ('cstr', 'B', 2) :  None : -0.986088819077201 :   0.0
+          ('cstr', 'B', 3) :  None : -0.872998697754925 :   0.0
+          ('cstr', 'B', 4) :  None : -0.672802558236165 :   0.0
+          ('cstr', 'B', 5) :  None : -0.381984726447246 :   0.0
+    F_['cstr', 'bypass']_upper_boundary : Size=20
+        Key                : Lower : Body               : Upper
+        ('bypass', 'A', 1) :  None :                0.0 :   0.0
+        ('bypass', 'A', 2) :  None :                0.0 :   0.0
+        ('bypass', 'A', 3) :  None :                0.0 :   0.0
+        ('bypass', 'A', 4) :  None :                0.0 :   0.0
+        ('bypass', 'A', 5) :  None :                0.0 :   0.0
+        ('bypass', 'B', 1) :  None :                0.0 :   0.0
+        ('bypass', 'B', 2) :  None :                0.0 :   0.0
+        ('bypass', 'B', 3) :  None :                0.0 :   0.0
+        ('bypass', 'B', 4) :  None :                0.0 :   0.0
+        ('bypass', 'B', 5) :  None :                0.0 :   0.0
+          ('cstr', 'A', 1) :  None : -9.945038552441128 :   0.0
+          ('cstr', 'A', 2) :  None :  -9.88685986789976 :   0.0
+          ('cstr', 'A', 3) :  None : -9.773769746577484 :   0.0
+          ('cstr', 'A', 4) :  None : -9.573573607058725 :   0.0
+          ('cstr', 'A', 5) :  None : -9.282755775269806 :   0.0
+          ('cstr', 'B', 1) :  None : -8.955732496381431 :   0.0
+          ('cstr', 'B', 2) :  None : -9.013911180922799 :   0.0
+          ('cstr', 'B', 3) :  None : -9.127001302245075 :   0.0
+          ('cstr', 'B', 4) :  None : -9.327197441763834 :   0.0
+          ('cstr', 'B', 5) :  None : -9.618015273552754 :   0.0
+    t_['cstr', 'bypass']_sum : Size=5
+        Key : Lower : Body                  : Upper
+          1 :   0.0 :                   0.0 :   0.0
+          2 :   0.0 :                   0.0 :   0.0
+          3 :   0.0 :                   0.0 :   0.0
+          4 :   0.0 :                   0.0 :   0.0
+          5 :   0.0 : 2.886579864025407e-14 :   0.0
+    t_['cstr', 'bypass']_lower_boundary : Size=10
+        Key           : Lower : Body               : Upper
+        ('bypass', 1) :  None :                0.0 :   0.0
+        ('bypass', 2) :  None :                0.0 :   0.0
+        ('bypass', 3) :  None :                0.0 :   0.0
+        ('bypass', 4) :  None :                0.0 :   0.0
+        ('bypass', 5) :  None :                0.0 :   0.0
+          ('cstr', 1) :  None : -1.208303688932111 :   0.0
+          ('cstr', 2) :  None : -1.208303688932111 :   0.0
+          ('cstr', 3) :  None : -1.208303688932111 :   0.0
+          ('cstr', 4) :  None : -1.208303688932111 :   0.0
+          ('cstr', 5) :  None :  -1.20830368893214 :   0.0
+    t_['cstr', 'bypass']_upper_boundary : Size=10
+        Key           : Lower : Body               : Upper
+        ('bypass', 1) :  None :                0.0 :   0.0
+        ('bypass', 2) :  None :                0.0 :   0.0
+        ('bypass', 3) :  None :                0.0 :   0.0
+        ('bypass', 4) :  None :                0.0 :   0.0
+        ('bypass', 5) :  None :                0.0 :   0.0
+          ('cstr', 1) :  None :  -98.7916963110679 :   0.0
+          ('cstr', 2) :  None :  -98.7916963110679 :   0.0
+          ('cstr', 3) :  None :  -98.7916963110679 :   0.0
+          ('cstr', 4) :  None :  -98.7916963110679 :   0.0
+          ('cstr', 5) :  None : -98.79169631106787 :   0.0
+    YPD_rate_calc : Size=5
+        Key : Lower : Body                    : Upper
+          1 :   0.0 :   -7.10008882673363e-07 :   0.0
+          2 :   0.0 :  -5.715920171622813e-07 :   0.0
+          3 :   0.0 :  -1.053816783391781e-06 :   0.0
+          4 :   0.0 : -1.9494321512603108e-07 :   0.0
+          5 :   0.0 :  -8.521931486038525e-07 :   0.0
+    YPD_rate_rel : Size=5
+        Key : Lower : Body : Upper
+          1 :   0.0 :  0.0 :   0.0
+          2 :   0.0 :  0.0 :   0.0
+          3 :   0.0 :  0.0 :   0.0
+          4 :   0.0 :  0.0 :   0.0
+          5 :   0.0 :  0.0 :   0.0
+    YPD_vol_act : Size=5
+        Key : Lower : Body : Upper
+          1 :   0.0 :  0.0 :   0.0
+          2 :   0.0 :  0.0 :   0.0
+          3 :   0.0 :  0.0 :   0.0
+          4 :   0.0 :  0.0 :   0.0
+          5 :   0.0 :  0.0 :   0.0
+    neg_YPD_FR_deactivation : Size=10
+        Key      : Lower : Body : Upper
+        ('A', 1) :   0.0 :  0.0 :   0.0
+        ('A', 2) :   0.0 :  0.0 :   0.0
+        ('A', 3) :   0.0 :  0.0 :   0.0
+        ('A', 4) :   0.0 :  0.0 :   0.0
+        ('A', 5) :   0.0 :  0.0 :   0.0
+        ('B', 1) :   0.0 :  0.0 :   0.0
+        ('B', 2) :   0.0 :  0.0 :   0.0
+        ('B', 3) :   0.0 :  0.0 :   0.0
+        ('B', 4) :   0.0 :  0.0 :   0.0
+        ('B', 5) :   0.0 :  0.0 :   0.0
+    neg_YPD_rate_deactivation : Size=10
+        Key      : Lower : Body : Upper
+        ('A', 1) :   0.0 :  0.0 :   0.0
+        ('A', 2) :   0.0 :  0.0 :   0.0
+        ('A', 3) :   0.0 :  0.0 :   0.0
+        ('A', 4) :   0.0 :  0.0 :   0.0
+        ('A', 5) :   0.0 :  0.0 :   0.0
+        ('B', 1) :   0.0 :  0.0 :   0.0
+        ('B', 2) :   0.0 :  0.0 :   0.0
+        ('B', 3) :   0.0 :  0.0 :   0.0
+        ('B', 4) :   0.0 :  0.0 :   0.0
+        ('B', 5) :   0.0 :  0.0 :   0.0
+    neg_YPD_QFR_deactivation : Size=5
+        Key : Lower : Body : Upper
+          1 :   0.0 :  0.0 :   0.0
+          2 :   0.0 :  0.0 :   0.0
+          3 :   0.0 :  0.0 :   0.0
+          4 :   0.0 :  0.0 :   0.0
+          5 :   0.0 :  0.0 :   0.0
+    neg_YPD_vol_deactivation : Size=5
+        Key : Lower : Body : Upper
+          1 :   0.0 :  0.0 :   0.0
+          2 :   0.0 :  0.0 :   0.0
+          3 :   0.0 :  0.0 :   0.0
+          4 :   0.0 :  0.0 :   0.0
+          5 :   0.0 :  0.0 :   0.0
+    FR_['recycle', 'no_recycle']_sum : Size=10
+        Key      : Lower : Body : Upper
+        ('A', 1) :   0.0 :  0.0 :   0.0
+        ('A', 2) :   0.0 :  0.0 :   0.0
+        ('A', 3) :   0.0 :  0.0 :   0.0
+        ('A', 4) :   0.0 :  0.0 :   0.0
+        ('A', 5) :   0.0 :  0.0 :   0.0
+        ('B', 1) :   0.0 :  0.0 :   0.0
+        ('B', 2) :   0.0 :  0.0 :   0.0
+        ('B', 3) :   0.0 :  0.0 :   0.0
+        ('B', 4) :   0.0 :  0.0 :   0.0
+        ('B', 5) :   0.0 :  0.0 :   0.0
+    FR_['recycle', 'no_recycle']_lower_boundary : Size=20
+        Key                    : Lower : Body               : Upper
+        ('no_recycle', 'A', 1) :  None :                0.0 :   0.0
+        ('no_recycle', 'A', 2) :  None :                0.0 :   0.0
+        ('no_recycle', 'A', 3) :  None :                0.0 :   0.0
+        ('no_recycle', 'A', 4) :  None :                0.0 :   0.0
+        ('no_recycle', 'A', 5) :  None :                0.0 :   0.0
+        ('no_recycle', 'B', 1) :  None :                0.0 :   0.0
+        ('no_recycle', 'B', 2) :  None :                0.0 :   0.0
+        ('no_recycle', 'B', 3) :  None :                0.0 :   0.0
+        ('no_recycle', 'B', 4) :  None :                0.0 :   0.0
+        ('no_recycle', 'B', 5) :  None :                0.0 :   0.0
+           ('recycle', 'A', 1) :  None :                0.0 :   0.0
+           ('recycle', 'A', 2) :  None :                0.0 :   0.0
+           ('recycle', 'A', 3) :  None :                0.0 :   0.0
+           ('recycle', 'A', 4) :  None :                0.0 :   0.0
+           ('recycle', 'A', 5) :  None : -0.004961447558872 :   0.0
+           ('recycle', 'B', 1) :  None :                0.0 :   0.0
+           ('recycle', 'B', 2) :  None :                0.0 :   0.0
+           ('recycle', 'B', 3) :  None :                0.0 :   0.0
+           ('recycle', 'B', 4) :  None :                0.0 :   0.0
+           ('recycle', 'B', 5) :  None : -0.094267503618568 :   0.0
+    FR_['recycle', 'no_recycle']_upper_boundary : Size=20
+        Key                    : Lower : Body               : Upper
+        ('no_recycle', 'A', 1) :  None :              -10.0 :   0.0
+        ('no_recycle', 'A', 2) :  None :              -10.0 :   0.0
+        ('no_recycle', 'A', 3) :  None :              -10.0 :   0.0
+        ('no_recycle', 'A', 4) :  None :              -10.0 :   0.0
+        ('no_recycle', 'A', 5) :  None :                0.0 :   0.0
+        ('no_recycle', 'B', 1) :  None :              -10.0 :   0.0
+        ('no_recycle', 'B', 2) :  None :              -10.0 :   0.0
+        ('no_recycle', 'B', 3) :  None :              -10.0 :   0.0
+        ('no_recycle', 'B', 4) :  None :              -10.0 :   0.0
+        ('no_recycle', 'B', 5) :  None :                0.0 :   0.0
+           ('recycle', 'A', 1) :  None :                0.0 :   0.0
+           ('recycle', 'A', 2) :  None :                0.0 :   0.0
+           ('recycle', 'A', 3) :  None :                0.0 :   0.0
+           ('recycle', 'A', 4) :  None :                0.0 :   0.0
+           ('recycle', 'A', 5) :  None : -9.995038552441128 :   0.0
+           ('recycle', 'B', 1) :  None :                0.0 :   0.0
+           ('recycle', 'B', 2) :  None :                0.0 :   0.0
+           ('recycle', 'B', 3) :  None :                0.0 :   0.0
+           ('recycle', 'B', 4) :  None :                0.0 :   0.0
+           ('recycle', 'B', 5) :  None : -9.905732496381432 :   0.0
+    QFR_['recycle', 'no_recycle']_sum : Size=5
+        Key : Lower : Body : Upper
+          1 :   0.0 :  0.0 :   0.0
+          2 :   0.0 :  0.0 :   0.0
+          3 :   0.0 :  0.0 :   0.0
+          4 :   0.0 :  0.0 :   0.0
+          5 :   0.0 :  0.0 :   0.0
+    QFR_['recycle', 'no_recycle']_lower_boundary : Size=10
+        Key               : Lower : Body              : Upper
+        ('no_recycle', 1) :  None :               0.0 :   0.0
+        ('no_recycle', 2) :  None :               0.0 :   0.0
+        ('no_recycle', 3) :  None :               0.0 :   0.0
+        ('no_recycle', 4) :  None :               0.0 :   0.0
+        ('no_recycle', 5) :  None :               0.0 :   0.0
+           ('recycle', 1) :  None :               0.0 :   0.0
+           ('recycle', 2) :  None :               0.0 :   0.0
+           ('recycle', 3) :  None :               0.0 :   0.0
+           ('recycle', 4) :  None :               0.0 :   0.0
+           ('recycle', 5) :  None : -0.09922895117744 :   0.0
+    QFR_['recycle', 'no_recycle']_upper_boundary : Size=10
+        Key               : Lower : Body              : Upper
+        ('no_recycle', 1) :  None :             -10.0 :   0.0
+        ('no_recycle', 2) :  None :             -10.0 :   0.0
+        ('no_recycle', 3) :  None :             -10.0 :   0.0
+        ('no_recycle', 4) :  None :             -10.0 :   0.0
+        ('no_recycle', 5) :  None :               0.0 :   0.0
+           ('recycle', 1) :  None :               0.0 :   0.0
+           ('recycle', 2) :  None :               0.0 :   0.0
+           ('recycle', 3) :  None :               0.0 :   0.0
+           ('recycle', 4) :  None :               0.0 :   0.0
+           ('recycle', 5) :  None : -9.90077104882256 :   0.0
+    YRD_FR_act : Size=10
+        Key      : Lower : Body : Upper
+        ('A', 1) :   0.0 :  0.0 :   0.0
+        ('A', 2) :   0.0 :  0.0 :   0.0
+        ('A', 3) :   0.0 :  0.0 :   0.0
+        ('A', 4) :   0.0 :  0.0 :   0.0
+        ('A', 5) :   0.0 :  0.0 :   0.0
+        ('B', 1) :   0.0 :  0.0 :   0.0
+        ('B', 2) :   0.0 :  0.0 :   0.0
+        ('B', 3) :   0.0 :  0.0 :   0.0
+        ('B', 4) :   0.0 :  0.0 :   0.0
+        ('B', 5) :   0.0 :  0.0 :   0.0
+    YRD_QFR_act : Size=5
+        Key : Lower : Body : Upper
+          1 :   0.0 :  0.0 :   0.0
+          2 :   0.0 :  0.0 :   0.0
+          3 :   0.0 :  0.0 :   0.0
+          4 :   0.0 :  0.0 :   0.0
+          5 :   0.0 :  0.0 :   0.0
+    neg_YRD_FR_deactivation : Size=10
+        Key      : Lower : Body : Upper
+        ('A', 1) :   0.0 :  0.0 :   0.0
+        ('A', 2) :   0.0 :  0.0 :   0.0
+        ('A', 3) :   0.0 :  0.0 :   0.0
+        ('A', 4) :   0.0 :  0.0 :   0.0
+        ('A', 5) :   0.0 :  0.0 :   0.0
+        ('B', 1) :   0.0 :  0.0 :   0.0
+        ('B', 2) :   0.0 :  0.0 :   0.0
+        ('B', 3) :   0.0 :  0.0 :   0.0
+        ('B', 4) :   0.0 :  0.0 :   0.0
+        ('B', 5) :   0.0 :  0.0 :   0.0
+    neg_YRD_QFR_deactivation : Size=5
+        Key : Lower : Body : Upper
+          1 :   0.0 :  0.0 :   0.0
+          2 :   0.0 :  0.0 :   0.0
+          3 :   0.0 :  0.0 :   0.0
+          4 :   0.0 :  0.0 :   0.0
+          5 :   0.0 :  0.0 :   0.0
