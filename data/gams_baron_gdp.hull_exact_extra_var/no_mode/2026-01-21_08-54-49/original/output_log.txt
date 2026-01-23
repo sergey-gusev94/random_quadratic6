@@ -1,0 +1,114 @@
+Solving original (integer) problem with strategy gdp.hull_exact_extra_var...
+--- Job model.gms Start 01/21/26 08:54:50 52.2.0 d8e408be LEX-LEG x86 64bit/Linux
+--- Applying:
+    /package/gams/52.2/gmsprmun.txt
+--- GAMS Parameters defined
+    Input /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_baron_gdp.hull_exact_extra_var/no_mode/2026-01-21_08-54-49/original/model.gms
+    Output /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_baron_gdp.hull_exact_extra_var/no_mode/2026-01-21_08-54-49/original/output.lst
+    ScrDir /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_baron_gdp.hull_exact_extra_var/no_mode/2026-01-21_08-54-49/original/225a/
+    SysDir /package/gams/52.2/
+    CurDir /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_baron_gdp.hull_exact_extra_var/no_mode/2026-01-21_08-54-49/original/
+    LogOption 3
+    AppendLog 1
+Licensee: David Bernal / SECQUOIA Research Group         G251008+0003Ac-GEN
+          Purdue University, Davidson School of Chemical EngineeringDCE4838
+          225a/gamslice.dat
+          5a82958a-fbca-4a23
+          node:66820903 mem:995 cores:48 ipport:47757 v:2                  
+          Evaluation license: Not for commercial or production use
+          The time-limited license stops working on : Jun 30, 2027
+System information: 48 physical cores and 995 Gb physical memory detected
+GAMS 52.2.0   Copyright (C) 1987-2025 GAMS Development. All rights reserved
+--- Starting compilation
+--- model.gms(4041) 3 Mb
+--- $echo File /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_baron_gdp.hull_exact_extra_var/no_mode/2026-01-21_08-54-49/original/baron.opt
+--- model.gms(6288) 3 Mb
+--- Starting execution: elapsed 0:00:00.040
+--- model.gms(4050) 4 Mb
+--- Generating MINLP model GAMS_MODEL
+--- model.gms(4054) 6 Mb
+--- Reset Solvelink = 2
+--- model.gms(4054) 7 Mb
+---   1,426 rows  755 columns  7,075 non-zeroes
+---   20,575 nl-code  3,004 nl-non-zeroes
+---   50 discrete-columns
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 5.356E-01, 1.000E+00] - Zero values observed as well
+--- Bound     [min, max] : [ 1.000E+00, 1.000E+00] - Zero values observed as well
+--- Matrix    [min, max] : [ 2.186E-04, 5.575E+00] - Zero values observed as well
+--- model.gms(4054) 5 Mb
+--- Executing BARON (Solvelink=2): elapsed 0:00:00.052
+
+GAMS/BARON       52.2.0 d8e408be Dec 8, 2025           LEG x86 64bit/Linux    
+
+--- Using Option File
+Reading parameter(s) from "/local/scratch/a/sgusev/repos/random_quadratic6/data/gams_baron_gdp.hull_exact_extra_var/no_mode/2026-01-21_08-54-49/original/baron.opt"
+>>  MaxThreads 1
+*** Error line 1: Unknown option "MaxThreads"
+>>  EpsR 1e-06
+>>  EpsA 1e-10
+>>  AbsConFeasTol 1e-06
+>>  RelConFeasTol 0
+>>  AbsIntFeasTol 1e-05
+>>  RelIntFeasTol 0
+Finished reading from "/local/scratch/a/sgusev/repos/random_quadratic6/data/gams_baron_gdp.hull_exact_extra_var/no_mode/2026-01-21_08-54-49/original/baron.opt"
+===========================================================================
+ BARON version 25.11.17. Built: LNX-int-64 2025-11-17 22:27:04           
+ Running on machine dantzig.ecn.purdue.edu
+
+ BARON is a product of The Optimization Firm.
+ For information on BARON, see https://minlp.com/about-baron
+
+ If you publish work using this software, please cite publications from
+ https://minlp.com/baron-publications, such as: 
+
+ Zhang, Y. and N. V. Sahinidis, Solving continuous and discrete
+ nonlinear programs with BARON, Comput Optim Appl (2024). 
+ https://doi.org/10.1007/s10589-024-00633-0
+===========================================================================
+ This BARON run may utilize the following subsolver(s)
+ For LP/MIP/QP: CLP/CBC, ILOG CPLEX                             
+ For NLP: MINOS, SNOPT, External NLP, IPOPT, FILTERSQP
+===========================================================================
+ Doing local search
+ Preprocessing found feasible solution with value 0.569231
+ Solving bounding LP
+ Starting multi-start local search
+ Estimated remaining time for local search is 63 secs
+ Estimated remaining time for local search is 54 secs
+ Done with local search
+===========================================================================
+  Iteration       Time (s)     Mem   Lower bound     Upper bound   Progress
+*         1         155.30    38MB    -0.100404        0.173172       5.91%
+          1         202.33    38MB     0.245843E-01    0.173172      13.10%
+          1         283.53    39MB     0.245843E-01    0.173172      13.75%
+*         1         299.78    45MB     0.245843E-01    0.114244      60.47%
+          1         300.00    45MB     0.245843E-01    0.114244      60.47%
+
+                    *** Max. allowable time exceeded ***      
+
+ Wall clock time:                   300.86
+ Total CPU time used:               300.00
+
+ Total no. of BaR iterations:       1
+ Best solution found at node:       1
+ Max. no. of nodes in memory:       1
+ 
+ All done
+===========================================================================
+
+Solution      = 0.114244097680985  found at node 1
+Best possible = 0.0245842554940526
+Absolute gap  = 0.0896598421869323  optca = 1E-9
+Relative gap  = 0.784809403784678  optcr = 1E-6
+
+--- Reading solution for model GAMS_MODEL
+--- Executing after solve: elapsed 0:05:00.962
+--- model.gms(4057) 5 Mb
+--- model.gms(6288) 7 Mb
+--- Putfile results /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_baron_gdp.hull_exact_extra_var/no_mode/2026-01-21_08-54-49/original/results.dat
+--- Putfile statresults /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_baron_gdp.hull_exact_extra_var/no_mode/2026-01-21_08-54-49/original/resultsstat.dat
+*** Status: Normal completion
+--- Job model.gms Stop 01/21/26 08:59:51 elapsed 0:05:00.965
+Original problem solved. Time taken: 301.5281617641449 seconds
+Original objective value: 0.11424409768098429
