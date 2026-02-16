@@ -8,6 +8,7 @@ from generate_plots import (
     create_node_relaxation_comparison,
     create_performance_profile,
     create_relaxation_gap_comparison,
+    create_root_relaxation_scatter,
     create_solution_time_comparison,
 )
 
@@ -243,6 +244,35 @@ def process_archive_folder(archive_folder: str) -> None:
                                 comparison_type="gap",
                                 obj_tolerance=1e-4,
                             )
+
+        # Generate root relaxation scatter plots (BigM vs Hull variants)
+        has_root_relaxation = "Root Relaxation Value" in solver_df.columns
+        if has_root_relaxation:
+            solver_scatter_dir = os.path.join(plots_folder, "root_relaxation_scatter", solver_combo)
+            os.makedirs(solver_scatter_dir, exist_ok=True)
+
+            print("\nGenerating root relaxation scatter plots...")
+            scatter_comparisons = [
+                ("gdp.bigm", "gdp.hull_exact"),
+                ("gdp.bigm", "gdp.hull_exact_conic_no_cholesky"),
+            ]
+            strategies = solver_df["Strategy"].unique()
+            for strategy_x, strategy_y in scatter_comparisons:
+                if strategy_x in strategies and strategy_y in strategies:
+                    create_root_relaxation_scatter(
+                        solver_df,
+                        strategy_x,
+                        strategy_y,
+                        solver_scatter_dir,
+                        obj_tolerance=1e-4,
+                    )
+                else:
+                    print(
+                        f"Skipping scatter {strategy_x} vs {strategy_y}: "
+                        f"one or both strategies not present in data"
+                    )
+        else:
+            print("No Root Relaxation Value data found, skipping root relaxation scatter plots")
 
         print(f"Plot generation for {solver_combo} complete!")
 

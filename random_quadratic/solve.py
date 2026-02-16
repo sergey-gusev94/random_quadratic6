@@ -734,30 +734,51 @@ def save_results(
     # Get bound from solver results
     lower_bound = None
     upper_bound = None
+
+    def _is_valid_bound(val):
+        """Check if a bound value is a usable finite number (not None, inf, or NaN)."""
+        if val is None:
+            return False
+        try:
+            fval = float(val)
+            return not (fval != fval or abs(fval) == float("inf"))  # reject NaN and ±inf
+        except (TypeError, ValueError):
+            return False
+
     try:
         # Check for Gurobi/standard Pyomo result structure where problem is a list
         if hasattr(result, "problem") and len(result.problem) > 0:
             prob = result.problem[0]
-            if hasattr(prob, "lower_bound"):
+            if hasattr(prob, "lower_bound") and _is_valid_bound(prob.lower_bound):
                 lower_bound = prob.lower_bound
-            if hasattr(prob, "upper_bound"):
+            if hasattr(prob, "upper_bound") and _is_valid_bound(prob.upper_bound):
                 upper_bound = prob.upper_bound
 
         # SCIP stores the dual bound in solver section
         if lower_bound is None and hasattr(result, "solver"):
-            if hasattr(result.solver, "dual_bound"):
+            if hasattr(result.solver, "dual_bound") and _is_valid_bound(result.solver.dual_bound):
                 lower_bound = result.solver.dual_bound
-            if hasattr(result.solver, "best_objective_bound"):
+            if hasattr(result.solver, "best_objective_bound") and _is_valid_bound(
+                result.solver.best_objective_bound
+            ):
                 lower_bound = result.solver.best_objective_bound
-            if hasattr(result.solver, "lower_bound"):
+            if hasattr(result.solver, "lower_bound") and _is_valid_bound(
+                result.solver.lower_bound
+            ):
                 lower_bound = result.solver.lower_bound
-            if hasattr(result.solver, "upper_bound"):
+            if hasattr(result.solver, "upper_bound") and _is_valid_bound(
+                result.solver.upper_bound
+            ):
                 upper_bound = result.solver.upper_bound
 
         # Fallback to top-level attributes
-        if lower_bound is None and hasattr(result, "lower_bound"):
+        if lower_bound is None and hasattr(result, "lower_bound") and _is_valid_bound(
+            result.lower_bound
+        ):
             lower_bound = result.lower_bound
-        if upper_bound is None and hasattr(result, "upper_bound"):
+        if upper_bound is None and hasattr(result, "upper_bound") and _is_valid_bound(
+            result.upper_bound
+        ):
             upper_bound = result.upper_bound
 
         # If bounds are still not found, try parsing from output log
@@ -769,6 +790,21 @@ def save_results(
                 lower_bound = parsed_lower
             if upper_bound is None and parsed_upper is not None:
                 upper_bound = parsed_upper
+
+        # For direct Gurobi, also try the dedicated Gurobi log file.
+        # The redirect_stdout context manager only captures Python-level stdout,
+        # but Gurobi writes to the C-level file descriptor, so output_log.txt
+        # may not contain the "Best objective ... best bound ..." line.
+        if lower_bound is None or upper_bound is None:
+            gurobi_log_path = os.path.join(results_dir, "gurobi_solver.log")
+            if os.path.exists(gurobi_log_path):
+                parsed_lower, parsed_upper = parse_solver_bounds(
+                    gurobi_log_path, "gurobi", None
+                )
+                if lower_bound is None and parsed_lower is not None:
+                    lower_bound = parsed_lower
+                if upper_bound is None and parsed_upper is not None:
+                    upper_bound = parsed_upper
 
     except Exception as e:
         print(f"Warning: Could not extract bound from solver result: {str(e)}")
@@ -1105,9 +1141,12 @@ def solve_with_solver(
         # Set up options based on subsolver
         if subsolver and subsolver.lower() == "baron":
             # BARON options through GAMS
+            # BARON treats absolute and relative feasibility tests with OR semantics.
+            # Keep relative tolerances at 0 to use absolute checks only, which is the
+            # closest match to Gurobi/SCIP absolute feasibility tolerances.
             options_gams = [
                 "$onecho > baron.opt",
-                "MaxThreads 1",
+                "Threads 1",
                 f"EpsR {TOLS['rel_gap']}",
                 f"EpsA {TOLS['abs_gap']}",
                 f"AbsConFeasTol {TOLS['feas']}",
@@ -1205,6 +1244,13 @@ def solve_with_solver(
         opt.options["OptimalityTol"] = TOLS["opt"]
         opt.options["IntFeasTol"] = TOLS["int"]
 
+        # Direct Gurobi's log to a file so we can parse bounds from it.
+        # tee=True with redirect_stdout only captures Python-level stdout,
+        # but Gurobi writes to the C-level file descriptor, so the log
+        # would otherwise be lost for parsing.
+        gurobi_log_path = os.path.join(results_dir, "gurobi_solver.log")
+        opt.options["LogFile"] = gurobi_log_path
+
         start = time.time()
         result = opt.solve(
             model,
@@ -1228,6 +1274,10 @@ def solve_with_solver(
         opt.options["FeasibilityTol"] = TOLS["feas"]
         opt.options["OptimalityTol"] = TOLS["opt"]
         opt.options["IntFeasTol"] = TOLS["int"]
+
+        # Direct Gurobi's log to a file so we can parse bounds from it.
+        gurobi_log_path = os.path.join(results_dir, "gurobi_solver.log")
+        opt.options["LogFile"] = gurobi_log_path
 
         start = time.time()
         result = opt.solve(
@@ -1468,6 +1518,15 @@ def solve_model(
 
                 # Parse the output log for root relaxation value
                 root_relaxation_value = parse_root_relaxation(output_file, solver, subsolver)
+
+                # For direct Gurobi, also try the dedicated Gurobi log file
+                if root_relaxation_value is None:
+                    gurobi_log_path = os.path.join(results_dir, "gurobi_solver.log")
+                    if os.path.exists(gurobi_log_path):
+                        root_relaxation_value = parse_root_relaxation(
+                            gurobi_log_path, "gurobi", None
+                        )
+
                 strategy_results["original"]["root_relaxation_value"] = root_relaxation_value
 
                 # Save original problem results - gaps will be calculated later
@@ -1545,6 +1604,15 @@ def solve_model(
                 relaxed_root_relaxation_value = parse_root_relaxation(
                     output_file, solver, subsolver
                 )
+
+                # For direct Gurobi, also try the dedicated Gurobi log file
+                if relaxed_root_relaxation_value is None:
+                    gurobi_log_path = os.path.join(results_dir, "gurobi_solver.log")
+                    if os.path.exists(gurobi_log_path):
+                        relaxed_root_relaxation_value = parse_root_relaxation(
+                            gurobi_log_path, "gurobi", None
+                        )
+
                 strategy_results["relaxation"][
                     "root_relaxation_value"
                 ] = relaxed_root_relaxation_value

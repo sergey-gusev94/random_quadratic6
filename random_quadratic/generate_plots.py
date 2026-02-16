@@ -13,6 +13,8 @@ def _get_strategy_display_name(strategy: str) -> str:
     """Gets a display-friendly name for a strategy."""
     display_name = strategy.replace("gdp.", "")
     # Longer names must be replaced first to avoid partial replacements
+    display_name = display_name.replace("hull_exact_extra_var_inequal", "Hull Exact Extra Var Ineq.")
+    display_name = display_name.replace("hull_exact_conic_no_cholesky", "Hull Exact Conic (no Chol.)")
     display_name = display_name.replace("hull_exact", "Hull Exact")
     display_name = display_name.replace("hull_reduced_y", "Hull Reduced Y")
     display_name = display_name.replace("binary_multiplication", "Binary Mult.")
@@ -42,13 +44,17 @@ def _get_strategy_style_maps() -> tuple:
         "gdp.hull_exact": "-.",
         "gdp.hull_reduced_y": ":",
         "gdp.binary_multiplication": (0, (5, 1)),
+        "gdp.hull_exact_extra_var_inequal": (0, (10, 5)),  # long dashes
+        "gdp.hull_exact_conic_no_cholesky": (0, (3, 1, 1, 1)),  # dash-dot-dot
     }
     color_map = {
         "gdp.bigm": "blue",
         "gdp.hull": "brown",
-        "gdp.hull_exact": "green",
+        "gdp.hull_exact": "black",
         "gdp.hull_reduced_y": "purple",
         "gdp.binary_multiplication": "orange",
+        "gdp.hull_exact_extra_var_inequal": "darkgreen",
+        "gdp.hull_exact_conic_no_cholesky": "teal",
     }
     return style_map, color_map
 
@@ -522,6 +528,140 @@ def create_node_relaxation_comparison(
     plt.savefig(output_file, dpi=300, bbox_inches="tight")
     plt.close()
     print(f"Saved plot to {output_file}")
+
+
+def create_root_relaxation_scatter(
+    df: pd.DataFrame,
+    strategy_x: str,
+    strategy_y: str,
+    output_dir: str,
+    obj_tolerance: float = 1e-4,
+) -> None:
+    """
+    Create a scatter plot comparing root relaxation values between two strategies.
+
+    Each problem instance is a point:
+        x-axis → Root relaxation value for strategy_x
+        y-axis → Root relaxation value for strategy_y
+    A diagonal y=x reference line is drawn for easy comparison.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        DataFrame containing the results
+    strategy_x : str
+        Strategy for the x-axis (e.g., "gdp.bigm")
+    strategy_y : str
+        Strategy for the y-axis (e.g., "gdp.hull_exact")
+    output_dir : str
+        Directory to save the plot
+    obj_tolerance : float, optional
+        Tolerance for determining if objective values are different, by default 1e-4
+    """
+    col_name = "Root Relaxation Value"
+
+    print(f"Creating root relaxation scatter plot: {strategy_x} vs {strategy_y}")
+
+    # Check if the required column exists
+    if col_name not in df.columns:
+        print(f"Column '{col_name}' not found in data, skipping root relaxation scatter plot")
+        return
+
+    # Get display names
+    display_x = _get_strategy_display_name(strategy_x)
+    display_y = _get_strategy_display_name(strategy_y)
+
+    # Filter data for the two strategies
+    df_x = df[df["Strategy"] == strategy_x]
+    df_y = df[df["Strategy"] == strategy_y]
+
+    # Merge on Model Name to get matching pairs
+    merged = pd.merge(df_x, df_y, on="Model Name", suffixes=("_x", "_y"))
+
+    # Filter out rows where either root relaxation value is NaN
+    valid_data = merged[
+        pd.notna(merged[f"{col_name}_x"]) & pd.notna(merged[f"{col_name}_y"])
+    ]
+
+    if len(valid_data) == 0:
+        print(f"No valid root relaxation data found for {strategy_x} vs {strategy_y}, skipping")
+        return
+
+    values_x = valid_data[f"{col_name}_x"].astype(float)
+    values_y = valid_data[f"{col_name}_y"].astype(float)
+
+    # Check if objective values are different
+    obj_different = np.zeros(len(valid_data), dtype=bool)
+    if "Objective Value_x" in valid_data.columns and "Objective Value_y" in valid_data.columns:
+        obj_x = valid_data["Objective Value_x"]
+        obj_y = valid_data["Objective Value_y"]
+        obj_different = np.abs(obj_x - obj_y) > obj_tolerance
+
+    # Create the plot
+    plt.figure(figsize=(12, 8))
+
+    # Calculate axis limits
+    all_values = np.concatenate([values_x.values, values_y.values])
+    min_val = float(np.min(all_values))
+    max_val = float(np.max(all_values))
+    range_val = max_val - min_val
+    if range_val == 0:
+        range_val = abs(min_val) * 0.1 if min_val != 0 else 1.0
+
+    min_plot = min_val - range_val * 0.05
+    max_plot = max_val + range_val * 0.05
+
+    # Plot diagonal line y = x
+    plt.plot(
+        [min_plot, max_plot],
+        [min_plot, max_plot],
+        "k--",
+        alpha=0.5,
+        linewidth=4,
+        label="y = x",
+    )
+
+    # Plot data points with different colors based on objective value difference
+    blue_points = ~obj_different
+    red_points = obj_different
+
+    if np.any(blue_points):
+        plt.scatter(
+            values_x[blue_points],
+            values_y[blue_points],
+            alpha=0.7,
+            s=100,
+            color="blue",
+            label="Same objective",
+        )
+
+    if np.any(red_points):
+        plt.scatter(
+            values_x[red_points],
+            values_y[red_points],
+            alpha=0.7,
+            s=100,
+            color="red",
+            label="Different objective",
+        )
+
+    # Labels and formatting
+    plt.xlabel(f"{display_x} Root Relaxation", fontsize=28)
+    plt.ylabel(f"{display_y} Root Relaxation", fontsize=28)
+    plt.legend(loc="lower right", fontsize=22, framealpha=0.4)
+    plt.grid(True, alpha=0.3)
+    plt.xlim(min_plot, max_plot)
+    plt.ylim(min_plot, max_plot)
+    plt.tick_params(axis="both", which="major", labelsize=24)
+    plt.tight_layout()
+
+    # Save the figure
+    output_file = os.path.join(
+        output_dir, f"root_relaxation_scatter_{strategy_x}_vs_{strategy_y}.jpg"
+    )
+    plt.savefig(output_file, dpi=300, bbox_inches="tight")
+    plt.close()
+    print(f"Saved root relaxation scatter plot to {output_file}")
 
 
 def create_dolan_more_performance_profile(
