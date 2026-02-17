@@ -1,0 +1,131 @@
+Solving original (integer) problem with strategy gdp.hull...
+--- Job model.gms Start 02/17/26 00:06:02 52.2.0 d8e408be LEX-LEG x86 64bit/Linux
+--- Applying:
+    /package/gams/52.2/gmsprmun.txt
+--- GAMS Parameters defined
+    Input /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-05-57/original/model.gms
+    Output /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-05-57/original/output.lst
+    ScrDir /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-05-57/original/225a/
+    SysDir /package/gams/52.2/
+    CurDir /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-05-57/original/
+    LogOption 3
+    AppendLog 1
+Licensee: David Bernal / SECQUOIA Research Group         G251008+0003Ac-GEN
+          Purdue University, Davidson School of Chemical EngineeringDCE4838
+          225a/gamslice.dat
+          5a82958a-fbca-4a23
+          node:66820903 mem:995 cores:48 ipport:35957 v:2                  
+          Evaluation license: Not for commercial or production use
+          The time-limited license stops working on : Jun 30, 2027
+System information: 48 physical cores and 995 Gb physical memory detected
+GAMS 52.2.0   Copyright (C) 1987-2025 GAMS Development. All rights reserved
+--- Starting compilation
+--- model.gms(5864) 8 Mb
+--- $echo File /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-05-57/original/gurobi.opt
+--- model.gms(5878) 8 Mb
+--- model.gms(8672) 9 Mb
+--- Starting execution: elapsed 0:00:00.215
+--- model.gms(5873) 10 Mb
+--- Generating MINLP model GAMS_MODEL
+--- model.gms(4102) 13 Mb
+--- model.gms(5877) 15 Mb
+---   2,152 rows  590 columns  8,348 non-zeroes
+---   282,045 nl-code  5,854 nl-non-zeroes
+---   117 discrete-columns
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 3.226E-07, 1.000E+00] - Zero values observed as well
+--- Bound     [min, max] : [ 1.000E+00, 1.000E+00] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.701E-05, 6.895E+00]
+--- model.gms(5877) 11 Mb
+--- Executing GUROBI (Solvelink=5): elapsed 0:00:00.292
+Reading parameter(s) from "/local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-05-57/original/gurobi.opt"
+>>  NonConvex 2
+>>  Threads 1
+>>  MIPGap 1e-06
+>>  MIPGapAbs 1e-10
+>>  FeasibilityTol 1e-06
+>>  OptimalityTol 1e-06
+>>  IntFeasTol 1e-05
+Finished reading from "/local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-05-57/original/gurobi.opt"
+
+... GRB_LICENSE_FILE = /local/scratch/a/sgusev/gurobi.lic
+
+    Gurobi           52.2.0 d8e408be Dec 8, 2025           LEG x86 64bit/Linux    
+
+... GAMS/Gurobi Link license.
+... GMO Q Extraction (ThreePass): 0.00s
+
+    Gurobi Optimizer version 13.0.0 build v13.0.0rc1 (linux64 - "Oracle Linux Server 9.7")
+    
+    CPU model: AMD EPYC 7643 48-Core Processor, instruction set [SSE2|AVX|AVX2]
+    Thread count: 48 physical cores, 96 logical processors, using up to 1 threads
+    
+    Non-default parameters:
+    TimeLimit  300
+    MIPGap  1e-06
+    LogToConsole  0
+    NonConvex  2
+    Threads  1
+    
+    Optimize a model with 2151 rows, 1759 columns and 3663 nonzeros (Min)
+    Model fingerprint: 0xf6a68abc
+    Model has 4 linear objective coefficients and an objective constant of -7.5326641253022464e-02
+    Model has 10 quadratic objective terms
+    Model has 1170 general nonlinear constraints (62010 nonlinear terms)
+    Variable types: 1642 continuous, 117 integer (0 binary)
+    Coefficient statistics:
+      Matrix range     [1e+00, 1e+00]
+      Objective range  [4e-02, 1e+00]
+      QObjective range [4e-01, 4e+00]
+      Bounds range     [1e+00, 1e+00]
+      RHS range        [1e+00, 1e+00]
+      NLCon coe range  [3e-07, 7e+00]
+    Presolve model has 1170 nlconstr
+    Added 36504 variables to disaggregate expressions
+    Presolve removed 1170 rows and 0 columns
+    Presolve time: 0.31s
+    Presolved: 94581 rows, 38264 columns, 278613 nonzeros
+    Presolved model has 10 quadratic objective terms
+    Presolved model has 18837 bilinear constraint(s)
+    
+    Solving non-convex MIQCP to global optimality
+    
+    Variable types: 38147 continuous, 117 integer (117 binary)
+    
+    Root simplex log...
+    
+    Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       93477   -1.2501870e+00   3.686776e+03   0.000000e+00      5s
+      125878   -1.2501870e+00   0.000000e+00   0.000000e+00      7s
+    
+    Root relaxation: objective -1.250187e+00, 125878 iterations, 5.42 seconds (2.36 work units)
+    
+        Nodes    |    Current Node    |     Objective Bounds      |     Work
+     Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+    
+         0     0   -1.25019    0 48618          -   -1.25019      -     -  117s
+         0     0 infeasible    0               - infeasible      -     -  125s
+    
+    Explored 1 nodes (131234 simplex iterations) in 125.63 seconds (87.00 work units)
+    Thread count was 1 (of 96 available processors)
+    
+    Solution count 0
+    
+    Model is infeasible
+    Best objective -, best bound -, gap -
+    
+    User-callback calls 0, time in user-callback 0.00 sec
+
+--- Reading solution for model GAMS_MODEL
+***
+*** Solver did not provide marginals for model GAMS_MODEL
+***
+--- Executing after solve: elapsed 0:02:06.038
+--- model.gms(5880) 11 Mb
+--- model.gms(8672) 13 Mb
+--- Putfile results /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-05-57/original/results.dat
+--- Putfile statresults /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-05-57/original/resultsstat.dat
+*** Status: Normal completion
+--- Job model.gms Stop 02/17/26 00:08:08 elapsed 0:02:06.044
+Original problem solved. Time taken: 127.83180689811707 seconds
+Original objective value: -0.07532664125302246

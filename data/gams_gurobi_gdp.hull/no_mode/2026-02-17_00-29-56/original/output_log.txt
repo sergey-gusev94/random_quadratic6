@@ -1,0 +1,132 @@
+Solving original (integer) problem with strategy gdp.hull...
+--- Job model.gms Start 02/17/26 00:30:01 52.2.0 d8e408be LEX-LEG x86 64bit/Linux
+--- Applying:
+    /package/gams/52.2/gmsprmun.txt
+--- GAMS Parameters defined
+    Input /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-29-56/original/model.gms
+    Output /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-29-56/original/output.lst
+    ScrDir /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-29-56/original/225a/
+    SysDir /package/gams/52.2/
+    CurDir /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-29-56/original/
+    LogOption 3
+    AppendLog 1
+Licensee: David Bernal / SECQUOIA Research Group         G251008+0003Ac-GEN
+          Purdue University, Davidson School of Chemical EngineeringDCE4838
+          225a/gamslice.dat
+          5a82958a-fbca-4a23
+          node:66820903 mem:995 cores:48 ipport:38949 v:2                  
+          Evaluation license: Not for commercial or production use
+          The time-limited license stops working on : Jun 30, 2027
+System information: 48 physical cores and 995 Gb physical memory detected
+GAMS 52.2.0   Copyright (C) 1987-2025 GAMS Development. All rights reserved
+--- Starting compilation
+--- model.gms(4424) 8 Mb
+--- model.gms(4883) 10 Mb
+--- model.gms(5964) 10 Mb
+--- $echo File /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-29-56/original/gurobi.opt
+--- model.gms(8789) 11 Mb
+--- Starting execution: elapsed 0:00:00.285
+--- model.gms(5973) 12 Mb
+--- Generating MINLP model GAMS_MODEL
+--- model.gms(5977) 16 Mb
+---   2,129 rows  630 columns  8,990 non-zeroes
+---   378,673 nl-code  6,245 nl-non-zeroes
+---   104 discrete-columns
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 4.276E-07, 1.000E+00] - Zero values observed as well
+--- Bound     [min, max] : [ 1.000E+00, 1.000E+00] - Zero values observed as well
+--- Matrix    [min, max] : [ 2.143E-05, 9.571E+00]
+--- model.gms(5977) 13 Mb
+--- Executing GUROBI (Solvelink=5): elapsed 0:00:00.380
+Reading parameter(s) from "/local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-29-56/original/gurobi.opt"
+>>  NonConvex 2
+>>  Threads 1
+>>  MIPGap 1e-06
+>>  MIPGapAbs 1e-10
+>>  FeasibilityTol 1e-06
+>>  OptimalityTol 1e-06
+>>  IntFeasTol 1e-05
+Finished reading from "/local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-29-56/original/gurobi.opt"
+
+... GRB_LICENSE_FILE = /local/scratch/a/sgusev/gurobi.lic
+
+    Gurobi           52.2.0 d8e408be Dec 8, 2025           LEG x86 64bit/Linux    
+
+... GAMS/Gurobi Link license.
+... GMO Q Extraction (ThreePass): 0.00s
+
+    Gurobi Optimizer version 13.0.0 build v13.0.0rc1 (linux64 - "Oracle Linux Server 9.7")
+    
+    CPU model: AMD EPYC 7643 48-Core Processor, instruction set [SSE2|AVX|AVX2]
+    Thread count: 48 physical cores, 96 logical processors, using up to 1 threads
+    
+    Non-default parameters:
+    TimeLimit  300
+    MIPGap  1e-06
+    LogToConsole  0
+    NonConvex  2
+    Threads  1
+    
+    Optimize a model with 2128 rows, 1669 columns and 3784 nonzeros (Min)
+    Model fingerprint: 0xbe148295
+    Model has 5 linear objective coefficients and an objective constant of 8.3176087996527226e-01
+    Model has 15 quadratic objective terms
+    Model has 1040 general nonlinear constraints (84240 nonlinear terms)
+    Variable types: 1565 continuous, 104 integer (0 binary)
+    Coefficient statistics:
+      Matrix range     [1e+00, 1e+00]
+      Objective range  [1e-01, 6e-01]
+      QObjective range [5e-01, 6e+00]
+      Bounds range     [1e+00, 1e+00]
+      RHS range        [1e+00, 1e+00]
+      NLCon coe range  [4e-07, 1e+01]
+    Presolve model has 1040 nlconstr
+    Added 45448 variables to disaggregate expressions
+    Presolve removed 1040 rows and 0 columns
+    Presolve time: 0.38s
+    Presolved: 117464 rows, 47118 columns, 347296 nonzeros
+    Presolved model has 15 quadratic objective terms
+    Presolved model has 23504 bilinear constraint(s)
+    
+    Solving non-convex MIQCP to global optimality
+    
+    Variable types: 47014 continuous, 104 integer (104 binary)
+    
+    Root simplex log...
+    
+    Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       36997    1.5616442e-01   1.822870e+11   0.000000e+00      5s
+      116539    1.5616442e-01   5.904852e+03   0.000000e+00     10s
+      159478    1.5616442e-01   0.000000e+00   0.000000e+00     13s
+    
+    Root relaxation: objective 1.561644e-01, 159478 iterations, 11.74 seconds (6.44 work units)
+    
+        Nodes    |    Current Node    |     Objective Bounds      |     Work
+     Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+    
+         0     0    0.15616    0 61691          -    0.15616      -     -  181s
+         0     0 infeasible    0               - infeasible      -     -  193s
+    
+    Explored 1 nodes (165966 simplex iterations) in 193.88 seconds (133.39 work units)
+    Thread count was 1 (of 96 available processors)
+    
+    Solution count 0
+    
+    Model is infeasible
+    Best objective -, best bound -, gap -
+    
+    User-callback calls 0, time in user-callback 0.00 sec
+
+--- Reading solution for model GAMS_MODEL
+***
+*** Solver did not provide marginals for model GAMS_MODEL
+***
+--- Executing after solve: elapsed 0:03:14.383
+--- model.gms(5980) 13 Mb
+--- model.gms(8789) 15 Mb
+--- Putfile results /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-29-56/original/results.dat
+--- Putfile statresults /local/scratch/a/sgusev/repos/random_quadratic6/data/gams_gurobi_gdp.hull/no_mode/2026-02-17_00-29-56/original/resultsstat.dat
+*** Status: Normal completion
+--- Job model.gms Stop 02/17/26 00:33:16 elapsed 0:03:14.389
+Original problem solved. Time taken: 196.63269901275635 seconds
+Original objective value: 0.8317608799652723
